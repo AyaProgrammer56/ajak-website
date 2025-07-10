@@ -13,21 +13,22 @@
     <div class="logo">AJAK</div>
     <nav>
       <a href="#contact">اتصل بنا</a>
-      <a href="#structure">الهيكلة التنظيمية</a>
       <a href="#programs">البرامج</a>
-      <a href="#activities">الأنشطة</a>
       <a href="#goals">الأهداف</a>
+       <a href="#organigramme">الهيكلة التنظيمية</a>
       <a href="#about">من نحن</a>
+      <a href="#hero">الرئيسية</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero-section" id="hero">
     <img src="IMAGE TEAM.jpg" alt="AJAK Courthouse" class="hero-img">
     <div class="hero-content">
       <h2>مرحبا بكم في الصفحة الرسمية لجمعية<br>المحامين الشباب بالخميسات - <span>AJAK</span></h2>
       <h1>معاً من أجل تعزيز حقوق الإنسان</h1>
-      <button>اقرأ المزيد</button>
+
+      
     </div>
   </section>
 
@@ -54,20 +55,13 @@
   </section>
 
   <!-- organigramme-->
- <section id="structure">
+ <section class="organigramme-section"  id="organigramme" >
   <h1>الهيكل التنظيمي</h1>
 
   <div class="flip-cards">
     <div class="flip-card">
       <div class="flip-inner">
-        <div class="flip-front">المكتب التنفيذي</div>
-        <div class="flip-back">
-          <ul>
-            <li>محمد الأمين</li>
-            <li>فاطمة الزهراء</li>
-            <li>هشام بوزيان</li>
-          </ul>
-        </div>
+       
       </div>
     </div>
 
@@ -146,7 +140,7 @@
   <!-- Goals Section -->
 
 
-<section class="goals-section">
+<section class="goals-section" id="goals">
   <h1>🎯 أهداف الجمعية</h1>
 
   <div class="goal-item">
@@ -270,11 +264,6 @@ function toggleSection(id) {
       <p>التكوين في المعاهدات الدولية</p>
       <span class="more-link" onclick="openPopup('تعمل الجمعية على تعريف المشاركين بالاتفاقيات الدولية المتعلقة بحقوق الإنسان وتعزيز تنفيذها.')">عرض المزيد</span>
     </div>
-    <div class="program-card">
-      <div class="badge">7</div>
-      <p>تقوية قدرات المحامييات و المحاميين في مجال الترافع</p>
-      <span class="more-link" onclick="openPopup('تنظم الجمعية تدريبات خاصة لتحسين أداء المحامين في مرافعاتهم أمام القضاء الوطني والدولي.')">عرض المزيد</span>
-    </div>
   </div>
 </section>
 <!-- Popup -->
@@ -302,12 +291,15 @@ function toggleSection(id) {
       <div class="form-side">
         <h2>📞 <span class="gold-text">اتصل بنا</span></h2>
         <p class="desc">مرحبًا بكم! يسعدنا تواصلكم معنا للاستفسار، تقديم اقتراح، أو طلب مساعدة.</p>
-        <form>
-          <input type="text" placeholder="الاسم الكامل" required>
-          <input type="email" placeholder="البريد الإلكتروني" required>
-          <textarea placeholder="الرسالة" required></textarea>
-          <button type="submit">إرسال</button>
-        </form>
+        <form id="contactForm">  <!-- Ajoute un ID pour le formulaire -->
+  <input type="text" id="fullname" placeholder="الاسم الكامل" required>
+  <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+  <textarea id="message" placeholder="الرسالة" required></textarea>
+  <button type="submit">إرسال</button>
+</form>
+
+<!-- Affiche un message de succès/erreur -->
+<p id="responseMessage"></p>
       </div>
       <div class="info-side">
         <div class="gold-bar"></div>
@@ -315,7 +307,7 @@ function toggleSection(id) {
           <h3>معلومات التواصل</h3>
           <ul class="contact-list">
             <li><strong>📞 الهاتف:</strong> 0537553168</li>
-            <li><strong>📧 البريد الإلكتروني:</strong> <a href="mailto:lahraraya@gmail.com">lahraraya@gmail.com</a></li>
+            <li><strong>📧 البريد الإلكتروني:</strong> <a href="mailto:lahraraya@gmail.com" class="رابط البريد"  >lahraraya@gmail.com</a></li>
             <li><strong>🌐 فيسبوك:</strong> <a href="https://facebook.com/ajak" target="_blank">facebook.com/ajak</a></li>
             <li><strong>📍 العنوان:</strong> 08 شارع الدرك الملكي . الخميسات . </li>
           </ul>
@@ -323,8 +315,41 @@ function toggleSection(id) {
       </div>
     </div>
   </section>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+    e.preventDefault();  // Empêche le rechargement de la page
 
-  <script src="JS 1.js"></script>
+    const fullname = document.getElementById("fullname").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      const response = await fetch("http://localhost:5000/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ fullname, email, message }),
+      });
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        document.getElementById("responseMessage").textContent = "تم إرسال الرسالة بنجاح! شكرا لك.";
+        document.getElementById("contactForm").reset();  // Vide le formulaire
+      } else {
+        document.getElementById("responseMessage").textContent = "حدث خطأ أثناء الإرسال. حاول مرة أخرى.";
+      }
+    } catch (error) {
+      document.getElementById("responseMessage").textContent = "لا يوجد اتصال بالخادم.";
+    }
+  });
+</script>
+
+
+
+
+ 
+
+ 
 </body>
 </html>
 

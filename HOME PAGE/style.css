@@ -63,30 +63,50 @@ nav a:hover {
 .hero-img {
   width: 100%;
   filter: grayscale(100%);
+  display: block;
 }
 
 .hero-content {
   position: absolute;
-  top: 65%;
+  top: 120%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  text-align: center;
+  padding: 10px 20px;
 }
 
 .hero-content h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px; /* ↓ كان 15px */
+  line-height: 1.2;   /* ↓ كان 1.6 */
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .hero-content h2 span {
-  color: #f5d547;
+  color: #e1bb1f;
+  font-weight: 900;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-content h2 span:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #e1bb1f;
+  transform: scale(1.1);
 }
 
 .hero-content h1 {
-  font-size: 34px;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 0;     /* ↓ كان 10px */
+  line-height: 1.2;     /* ↓ لضبط التباعد */
+  color: #e1bb1f;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
 }
+
 
 .hero-content button {
   padding: 12px 25px;

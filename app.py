@@ -1,50 +1,39 @@
-from flask import Flask, request, render_template_string
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+from flask import Flask, request, jsonify
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-def send_email(subject, body, to_email):
-    sender_email = "emailk@gmail.com"          # غير هاد للإيميل ديالك
-    sender_password = "password_app_specific"  # غير هاد لكلمة السر أو كلمة سر التطبيق
+# Configuration SMTP (Gmail)
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'lahraraya@gmail.com'  # Email d'envoi (Ajak)
+app.config['MAIL_PASSWORD'] = '12345'  # Mot de passe Gmail ou "App Password"
 
-    msg = MIMEMultipart()
-    msg['From'] = sender_email
-    msg['To'] = to_email
-    msg['Subject'] = subject
+mail = Mail(app)
 
-    msg.attach(MIMEText(body, 'plain'))
-
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.starttls()
-    server.login(sender_email, sender_password)
-    server.sendmail(sender_email, to_email, msg.as_string())
-    server.quit()
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/contact', methods=['POST'])
 def contact():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        message = request.form.get('message')
+    data = request.json
+    fullname = data.get('fullname')
+    email = data.get('email')
+    message = data.get('message')
 
-        body = f"رسالة من: {name} <{email}>\n\n{message}"
-        send_email("رسالة من الموقع", body, "recipient@example.com")  # هنا دخل الإيميل اللي بغيت توصله الرسائل
-
-        return "تم إرسال الرسالة بنجاح!"
-
-    form_html = '''
-    <h2>نموذج الاتصال</h2>
-    <form method="POST">
-      الاسم: <input type="text" name="name" required><br><br>
-      الإيميل: <input type="email" name="email" required><br><br>
-      الرسالة:<br>
-      <textarea name="message" required></textarea><br><br>
-      <button type="submit">إرسال</button>
-    </form>
-    '''
-    return render_template_string(form_html)
+    # Envoie l'email
+    msg = Message(
+        subject=f"رسالة جديدة من {fullname} ({email})",
+        sender=email,
+        recipients=['lahraraya@gmail.com'],  # Email de réception (Ajak)
+        body=message
+    )
+    
+    try:
+        mail.send(msg)
+        return jsonify({"status": "success", "message": "تم إرسال الرسالة بنجاح!"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": f"خطأ في الإرسال: {str(e)}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    
