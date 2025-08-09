@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جمعية AJAK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* --- General & Reset --- */
+    :root {
+      --primary-dark: #0d1b2a;
+      --secondary-dark: #1b263b;
+      --primary-light: #f0f2f5;
+      --text-light: #e0e1dd;
+      --text-dark: #333;
+      --accent-gold: #c5b358;
+      --accent-gold-hover: #d4c16e;
+      --border-color: #ddd;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--primary-light);
+      color: var(--text-dark);
+      line-height: 1.7;
+      direction: rtl;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    section {
+      padding: 80px 5%;
+      overflow: hidden;
+    }
+
+    section:nth-of-type(even) {
+      background-color: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--accent-gold);
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-gold-hover);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* --- Header / Navbar --- */
+    header {
+      background-color: #fff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px var(--shadow-color);
+    }
+
+    header .logo {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      z-index: 1002;
+    }
+
+    header .main-nav a {
+      margin: 0 15px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--secondary-dark);
+      position: relative;
+      padding-bottom: 5px;
+    }
+
+    header .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.3s ease;
+    }
+
+    header .main-nav a:hover::after {
+      width: 100%;
+    }
+
+    /* --- Hamburger Menu --- */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .menu-toggle .bar {
+        width: 100%;
+        height: 3px;
+        background-color: var(--primary-dark);
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* --- Hero Section --- */
+    .hero-section {
+      position: relative;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0;
+    }
+
+    .hero-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(13, 27, 42, 0.7); /* Dark overlay */
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-content h2 {
+      font-size: 2rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .hero-content h2 span {
+      color: var(--accent-gold);
+      font-weight: 900;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    /* --- About Section --- */
+    .about-section {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about-text, .about-image {
+      flex: 1;
+    }
+    
+    .about-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    .about-text h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 60px;
+        height: 4px;
+        background-color: var(--accent-gold);
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .about-text .highlight {
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px var(--shadow-color);
+    }
+    
+    /* --- Combined Services & Stats Section --- */
+    .services-stats-section {
+        background-color: var(--secondary-dark);
+        padding: 80px 5%;
+        text-align: center;
+    }
+    
+    .services-stats-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+        color: white;
+    }
+    
+    .services-stats-section h1::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--accent-gold);
+        border-radius: 2px;
+    }
+
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .cards-grid > a, .cards-grid > div {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+    }
+    .cards-grid > a > .service-card, .cards-grid > div > .service-card {
+        flex-grow: 1;
+    }
+
+    .stat-card, .service-card {
+        background-color: var(--primary-dark);
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        color: white;
+        border-bottom: 4px solid var(--accent-gold);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 220px;
+    }
+    
+    .service-card {
+        cursor: pointer;
+    }
+    
+    .stat-card:hover, .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        color: var(--accent-gold);
+        margin-bottom: 15px;
+        height: 50px;
+    }
+    
+    .stat-card .counter {
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #fff;
+    }
+    
+    .service-card h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .stat-card p, .service-card p {
+        font-size: 1rem;
+        color: var(--text-light);
+        font-weight: 600;
+        line-height: 1.5;
+    }
+
+    /* --- Goals Section --- */
+    .goals-section {
+        background-color: #ffffff;
+    }
+    .goals-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .goals-section h1 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+    }
+
+    .goal-item {
+        background-color: #fff;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        overflow: hidden;
+    }
+
+    .goal-title {
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+        background-color: #fff;
+        transition: background-color 0.3s;
+    }
+    
+    .goal-title:hover {
+        background-color: #f9f9f9;
+    }
+
+    .goal-title span {
+        color: var(--accent-gold);
+        font-size: 1.5rem;
+        margin-left: 15px;
+    }
+
+    .goal-content {
+        display: none;
+        padding: 0 20px 20px 20px;
+        opacity: 0;
+        height: 0;
+        transition: all 0.5s ease;
+    }
+    
+    .goal-content ul {
+        list-style-position: inside;
+        padding-right: 20px;
+    }
+
+    .goal-content li {
+        margin-bottom: 10px;
+    }
+
+
+    /* --- Programs Section --- */
+    .programs-section {
+        text-align: center;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+
+    .section-description {
+        max-width: 700px;
+        margin: 0 auto 50px auto;
+        font-size: 1.1rem;
+        color: #666;
+    }
+
+    .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .program-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px var(--shadow-color);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+    }
+
+    .program-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+
+    .program-card .badge {
+        background-color: var(--accent-gold);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 20px auto;
+    }
+
+    .program-card p {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 20px;
+    }
+
+    .more-link {
+        color: var(--accent-gold);
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    /* --- Popup --- */
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+    }
+
+    .popup-content {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        position: relative;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #888;
+    }
+
+    #popup-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    /* --- Modal Styles --- */
+    .modal {
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .modal.active {
+        display: flex;
+    }
+    .modal-content {
+        background-color: #fff;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 600px;
+        position: relative;
+        animation: fadeIn 0.4s ease;
+    }
+    .modal-close {
+        color: #aaa;
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .modal-close:hover,
+    .modal-close:focus {
+        color: black;
+    }
+    .modal-tabs {
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .modal-tabs .tab-link {
+        background-color: inherit;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: 'Cairo', sans-serif;
+        flex-grow: 1;
+        text-align: center;
+    }
+    .modal-tabs .tab-link:hover {
+        background-color: #f1f1f1;
+    }
+    .modal-tabs .tab-link.active {
+        background-color: var(--primary-light);
+        color: var(--accent-gold);
+        border-bottom: 2px solid var(--accent-gold);
+    }
+    .modal-tab-content {
+        display: none;
+    }
+    .modal-tab-content h3 {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .modal-content .input-group {
+        text-align: right;
+    }
+    
+    /* --- New Guidance Styles --- */
+    .guidance-contacts-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .guidance-contact-card {
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-right: 4px solid var(--accent-gold);
+        transition: box-shadow 0.3s ease;
+    }
+    .guidance-contact-card:hover {
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .guidance-contact-info h4 {
+        margin: 0 0 5px 0;
+        color: var(--primary-dark);
+        font-size: 1.1rem;
+    }
+    .guidance-contact-info span {
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .guidance-contact-info a {
+        color: #555;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+    }
+    .guidance-contact-icon a {
+        font-size: 1.8rem;
+        color: var(--accent-gold);
+    }
+
+
+    /* --- Contact Section --- */
+    .contact-section {
+        background-color: var(--primary-dark);
+        padding: 100px 5%;
+    }
+    .contact-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 50px;
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    .contact-info {
+        background-color: var(--primary-dark);
+        color: white;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .contact-info h2 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 10px;
+    }
+    .contact-info p {
+        color: var(--text-light);
+        margin-bottom: 30px;
+    }
+    .contact-list {
+        list-style: none;
+    }
+    .contact-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+    .contact-list li i {
+        color: var(--accent-gold);
+        font-size: 1.5rem;
+        margin-left: 15px;
+        width: 30px;
+        text-align: center;
+    }
+    .contact-list a {
+        color: white;
+        transition: color 0.3s;
+    }
+    .contact-list a:hover {
+        color: var(--accent-gold);
+    }
+    .contact-form {
+        padding: 50px;
+    }
+    .contact-form h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .input-group {
+        margin-bottom: 20px;
+    }
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #555;
+    }
+    .input-group input, .input-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        font-family: 'Cairo', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .input-group input:focus, .input-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-gold);
+        box-shadow: 0 0 0 3px rgba(197, 179, 88, 0.2);
+    }
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 8px;
+        background-color: var(--accent-gold);
+        color: var(--primary-dark);
+        font-size: 1.2rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        text-align: center;
+        display: inline-block;
+    }
+    .submit-btn:hover {
+        background-color: var(--accent-gold-hover);
+        transform: translateY(-2px);
+    }
+    #responseMessage, .modal-response-message {
+        margin-top: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+
+    /* --- Responsive Design --- */
+    @media (max-width: 992px) {
+        .about-section, .contact-wrapper {
+            flex-direction: column;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        .main-nav {
+            display: flex;
+            position: fixed;
+            top: 0;
+            right: -100%; /* Start off-screen */
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background-color: var(--secondary-dark);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.4s ease-in-out;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .main-nav.active {
+            right: 0;
+        }
+
+        header .main-nav a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+        
+        .main-nav a::after {
+            background-color: var(--accent-gold);
+        }
+        
+        /* Hamburger animation */
+        .menu-toggle.active .bar:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+        .menu-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .hero-section {
+            display: none;
+        }
+
+        .about-text h1, .services-stats-section h1, .goals-section h1, .section-title {
+            font-size: 2rem;
+        }
+
+        section {
+            padding: 60px 5%;
+        }
+        .contact-info, .contact-form {
+            padding: 30px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">AJAK</div>
+    <nav class="main-nav" id="main-nav">
+      <a href="#hero"> الرئيسية</a>
+      <a href="#services-stats">خدماتنا</a>
+      <a href="#about">من نحن</a>
+      <a href="#goals">الأهداف</a>
+      <a href="#programs">البرامج</a>
+      <a href="#contact">اتصل بنا</a>
+    </nav>
+    <button id="menu-toggle" class="menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <img src="{{ url_for('static', filename='LOI MM.webp') }}" alt="AJAK Courthouse" class="hero-img" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0d1b2a/c5b358?text=AJAK';">
+    <div class="hero-content">
+      <h2>مرحبا بكم في الصفحة الرسمية لجمعية<br>المحامين الشباب بالخميسات - <span>AJAK</span></h2>
+      <h1>معاً من أجل تعزيز حقوق الإنسان</h1>
+    </div>
+  </section>
+
+  <!-- Combined Services & Stats Section -->
+  <section class="services-stats-section" id="services-stats">
+    <div class="container">
+        <h1>إحصائيات وخدمات الجمعية</h1>
+        <div class="cards-grid">
+            <!-- Call to Action Card 1 -->
+            <div class="service-card" data-modal-target="#volunteer-modal">
+                <i class="fas fa-hand-holding-heart card-icon"></i>
+                <h3>كن متطوعاً</h3>
+                <p>انضم لفريقنا وساهم في نشر الوعي الحقوقي</p>
+            </div>
+
+            <!-- Service Card 2 -->
+            <a href="https://hrlibrary.umn.edu/arab/index.html" target="_blank">
+              <div class="service-card">
+                  <i class="fas fa-book-open card-icon"></i>
+                  <h3>المكتبة الحقوقية</h3>
+                  <p>ولوج مباشر للمكتبة العربية لحقوق الإنسان</p>
+              </div>
+            </a>
+
+            <!-- Service Card 3 -->
+            <div class="service-card" data-modal-target="#forms-modal">
+                <i class="fas fa-hands-helping card-icon"></i>
+                <h3>الدعم والشكايات والتوجيه</h3>
+                <p>اطلب الدعم أو قدم شكاية أو تواصل مع موجه</p>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="service-card" data-modal-target="#radio-modal">
+                <i class="fas fa-broadcast-tower card-icon"></i>
+                <h3>إزرفان راديو</h3>
+                <p>استمع لحلقاتنا المسجلة</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="about-text">
+      <h1>من نحن</h1>
+      <p>
+        جمعية <span class="highlight">AJAK</span> هي جمعية قانونية غير ربحية، ملتزمة بالدفاع عن حقوق الإنسان، والعدالة، والمساواة للجميع. تأسست على يد مجموعة من المهنيين القانونيين، بطلة الشغوفين بالعدالة ونشرها، في أجواء سلمية. <br><br>
+        من خلال الوعي حول حقوق الإنسان، ومرافقة فئة الدعم الضعيف، التي غالباً ما تُهمل أنصاتهم، من خلال الوعي، والمرافقة، والمساعدة القانونية، نسعى لبناء مجتمع أكثر عدلاً وشمولاً.
+      </p>
+    </div>
+    <div class="about-image">
+      <img src="{{ url_for('static', filename='IMAGE TEAM.jpg') }}" alt="AJAK Team"  onerror="this.onerror=null;this.src='https://placehold.co/600x400/1b263b/ffffff?text=فريق+AJAK';">
+    </div>
+  </section>
+
+
+  <!-- Goals Section -->
+  <section class="goals-section" id="goals">
+    <div class="goals-container">
+        <h1>🎯 أهداف الجمعية</h1>
+        <div class="goal-item">
+          <div class="goal-title" onclick="toggleSection('ajak')">
+            <span>1.</span> أهداف الجمعية العامة (AJAK)
+          </div>
+          <div class="goal-content" id="ajak">
+            <ul>
+              <li>المساهمة في ترسيخ حقوق الإنسان ونشر ثقافتها بين المواطنين.</li>
+              <li>الدفاع عن استقلال القضاء والعمل من أجل عدالة نزيهة ومستقلة.</li>
+              <li>المرافعة من أجل ملاءمة القوانين المغربية مع الاتفاقيات الدولية.</li>
+              <li>التعاون والشراكة مع جمعيات وطنية ودولية في نفس المجال.</li>
+              <li>التحسيس والتكوين لفائدة المحامين، القضاة، وموظفي العدل.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-title" onclick="toggleSection('femmes')">
+            <span>2.</span> مركز حماية النساء ضحايا العنف
+          </div>
+          <div class="goal-content" id="femmes">
+            <ul>
+              <li>الدفاع عن حقوق النساء وحمايتهن من العنف الجسدي، النفسي، والاقتصادي.</li>
+              <li>تعزيز ثقافة المساواة بين الجنسين.</li>
+              <li>تقوية قدرات النساء الفردية والجماعية.</li>
+              <li>تقديم الدعم القانوني والنفسي للنساء.</li>
+              <li>تنظيم ورشات تحسيسية وتكوينية حول الحقوق القانونية.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="goal-item">
+          <div class="goal-title" onclick="toggleSection('corruption')">
+            <span>3.</span> مركز محاربة الرشوة
+          </div>
+          <div class="goal-content" id="corruption">
+            <ul>
+              <li>التوعية بخطورة الرشوة من خلال اللقاءات والندوات.</li>
+              <li>رصد الظاهرة وإعداد قاعدة معطيات عنها.</li>
+              <li>استغلال وسائل الإعلام للتحسيس وتنمية المواطنة.</li>
+              <li>متابعة ملفات الفساد وإعداد تقارير.</li>
+              <li>إجراء دراسات دورية حول الفساد.</li>
+              <li>التبليغ عن الرشوة للسلطات المختصة.</li>
+              <li>خلق شبكة وطنية لتبادل الخبرات لمحاربة الفساد.</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Programs Section -->
+  <section class="programs-section" id="programs">
+    <h2 class="section-title">البرامج</h2>
+    <p class="section-description">
+      تقدم جمعية AJAK مجموعة من البرامج التوعوية والتعليمية التي تهدف إلى تعزيز الوعي القانوني، والدفاع عن حقوق الإنسان، ودعم الفئات المستضعفة من خلال الإعلام والتكوين والتواصل المباشر.
+    </p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="badge">1</div>
+        <p>إصلاح العدالة</p>
+        <span class="more-link" onclick="openPopup('تسعى الجمعية إلى المساهمة في تطوير منظومة العدالة وضمان الشفافية والإنصاف.')">عرض المزيد</span>
+      </div>
+      <div class="program-card">
+        <div class="badge">3</div>
+        <p>محاربة العنف ضد النساء</p>
+        <span class="more-link" onclick="openPopup('تعمل الجمعية على تقديم الدعم القانوني والنفسي للنساء ضحايا العنف من أجل حمايتهن وتعزيز حقوقهن.')">عرض المزيد</span>
+      </div>
+      <div class="program-card">
+        <div class="badge">4</div>
+        <p>التكوين في المعاهدات الدولية</p>
+        <span class="more-link" onclick="openPopup('تعمل الجمعية على تعريف المشاركين بالاتفاقيات الدولية المتعلقة بحقوق الإنسان وتعزيز تنفيذها.')">عرض المزيد</span>
+      </div>
+      <div class="program-card">
+        <div class="badge">5</div>
+        <p>محاربة الرشوة</p>
+        <span class="more-link" onclick="openPopup('تعتمد الجمعية على التوعية المجتمعية والآليات القانونية لمحاربة الفساد والرشوة.')">عرض المزيد</span>
+      </div>
+      <div class="program-card">
+        <div class="badge">6</div>
+        <p>التكوين الإعلامي</p>
+        <span class="more-link" onclick="openPopup('تهدف إلى تمكين المشاركين من مهارات الإعلام الحقوقي وإيصال الرسائل القانونية بفعالية.')">عرض المزيد</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popup for Programs -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">✖</span>
+      <p id="popup-text"></p>
+    </div>
+  </div>
+
+ <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h2>معلومات التواصل</h2>
+          <p>نحن هنا للإجابة على استفساراتكم وتقديم المساعدة. لا تترددوا في التواصل معنا عبر إحدى القنوات التالية.</p>
+          <ul class="contact-list">
+            <li><i class="fas fa-phone-alt"></i> <a href="tel:0537553168">0537553168</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:lahraraya@gmail.com">lahraraya@gmail.com</a></li>
+            <li><i class="fab fa-facebook-f"></i> <a href="https://www.facebook.com/share/1CF5S8vQju/" target="_blank">facebook.com/ajak</a></li>
+            <li><i class="fas fa-map-marker-alt"></i> <span>08 شارع الدرك الملكي، الخميسات</span></li>
+          </ul>
+        </div>
+        <div class="contact-form">
+          <h2>أرسل لنا رسالة</h2>
+          <form id="contactForm">
+            <div class="input-group">
+              <label for="fullname">الاسم الكامل</label>
+              <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="input-group">
+              <label for="email">البريد الإلكتروني</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+              <label for="message">رسالتك</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">إرسال الرسالة</button>
+          </form>
+          <p id="responseMessage"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+      
+  <!-- Modals HTML -->
+
+  <!-- Volunteer Modal -->
+  <div class="modal" id="volunteer-modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2 style="text-align: center; margin-bottom: 20px;">التطوع معنا</h2>
+        <div style="text-align: right; margin-bottom: 25px;">
+            <h3 style="border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px; margin-bottom: 15px;">لماذا تتطوع في جمعية AJAK؟</h3>
+            <p>تطوعك معنا هو فرصة ثمينة لتكون جزءاً فاعلاً في مجتمعك. من خلال الانضمام إلينا، ستساهم مباشرة في الدفاع عن حقوق الإنسان، دعم الفئات الهشة، ونشر ثقافة العدالة والمساواة.</p>
+            <h3 style="border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px; margin-bottom: 15px; margin-top: 20px;">ماذا ستستفيد؟</h3>
+            <ul style="padding-right: 20px;">
+                <li>اكتساب خبرة عملية في المجال القانوني والحقوقي.</li>
+                <li>تطوير مهاراتك في التواصل، التنظيم، والعمل الجماعي.</li>
+                <li>المساهمة في إحداث تغيير إيجابي وملموس.</li>
+                <li>الحصول على شهادة تطوع من الجمعية.</li>
+            </ul>
+        </div>
+        <a href="#contact" class="submit-btn volunteer-contact-btn">تواصل معنا للتطوع</a>
+    </div>
+  </div>
+
+  <!-- Forms Modal (Support, Complaints, Guidance) -->
+  <div class="modal" id="forms-modal">
+      <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <h2>الدعم، الشكايات والتوجيه</h2>
+          <div class="modal-tabs">
+              <button class="tab-link active" onclick="openTab(event, 'support-form-content')">الدعم النفسي</button>
+              <button class="tab-link" onclick="openTab(event, 'complaint-form-content')">تقديم شكاية</button>
+              <button class="tab-link" onclick="openTab(event, 'guidance-content')">التوجيه</button>
+          </div>
+
+          <!-- Support Form Tab -->
+          <div id="support-form-content" class="modal-tab-content" style="display: block;">
+              <h3>استمارة طلب الدعم النفسي</h3>
+              <p>نحن هنا للاستماع إليك. يرجى ملء النموذج أدناه وسيقوم أحد المختصين بالتواصل معك في أقرب وقت ممكن.</p>
+              <form class="modal-form">
+                  <div class="input-group">
+                      <label for="support-name">الاسم (اختياري)</label>
+                      <input type="text" id="support-name" name="name">
+                  </div>
+                  <div class="input-group">
+                      <label for="support-contact">معلومات التواصل (هاتف أو بريد إلكتروني)</label>
+                      <input type="text" id="support-contact" name="contact" required>
+                  </div>
+                  <div class="input-group">
+                      <label for="support-message">صف طلبك</label>
+                      <textarea id="support-message" name="message" rows="4" required></textarea>
+                  </div>
+                  <button type="submit" class="submit-btn">إرسال الطلب</button>
+              </form>
+          </div>
+
+          <!-- Complaint Form Tab -->
+          <div id="complaint-form-content" class="modal-tab-content">
+              <h3>استمارة تقديم شكاية</h3>
+              <p>إذا كنت ترغب في التبليغ عن حالة فساد أو انتهاك للحقوق، يرجى استخدام هذا النموذج. نضمن سرية معلوماتك.</p>
+              <form class="modal-form">
+                  <div class="input-group">
+                      <label for="complaint-name">الاسم الكامل</label>
+                      <input type="text" id="complaint-name" name="name" required>
+                  </div>
+                  <div class="input-group">
+                      <label for="complaint-contact">معلومات التواصل</label>
+                      <input type="text" id="complaint-contact" name="contact" required>
+                  </div>
+                  <div class="input-group">
+                      <label for="complaint-subject">موضوع الشكاية</label>
+                      <input type="text" id="complaint-subject" name="subject" required>
+                  </div>
+                  <div class="input-group">
+                      <label for="complaint-message">تفاصيل الشكاية</label>
+                      <textarea id="complaint-message" name="message" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="submit-btn">إرسال الشكاية</button>
+              </form>
+          </div>
+          
+          <!-- Guidance Tab -->
+          <div id="guidance-content" class="modal-tab-content">
+              <h3>فريق التوجيه</h3>
+              <p>للحصول على توجيه قانوني أو إداري، يمكنكم التواصل مباشرة مع أحد أعضاء فريقنا المختص.</p>
+              <div class="guidance-contacts-container">
+                  <!-- Contact 1 -->
+                  <div class="guidance-contact-card">
+                      <div class="guidance-contact-info">
+                          <h4>الأستاذ محمد الحبيب بنشيخ</h4>
+                          <span>محام بهيئة الرباط</span>
+                      </div>
+                      <div class="guidance-contact-icon">
+                          <a href="tel:+212667368797"><i class="fas fa-phone-square-alt"></i></a>
+                      </div>
+                  </div>
+                  <!-- Contact 2 -->
+                  <div class="guidance-contact-card">
+                      <div class="guidance-contact-info">
+                          <h4>الأستاذ هشام المقدمي</h4>
+                          <span>محام بهيئة الرباط</span>
+                      </div>
+                      <div class="guidance-contact-icon">
+                          <a href="tel:+212661793007"><i class="fas fa-phone-square-alt"></i></a>
+                      </div>
+                  </div>
+                  <!-- Contact 3 -->
+                  <div class="guidance-contact-card">
+                      <div class="guidance-contact-info">
+                          <h4>الأستاذة سعاد بطل</h4>
+                          <span>محامية بهيئة الرباط</span>
+                      </div>
+                      <div class="guidance-contact-icon">
+                          <a href="tel:+212667467295"><i class="fas fa-phone-square-alt"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          <p class="modal-response-message" style="margin-top: 15px; text-align: center; font-weight: 600;"></p>
+      </div>
+  </div>
+
+  <!-- Radio Modal -->
+  <div class="modal" id="radio-modal">
+      <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <h2 style="text-align: center; margin-bottom: 20px;">إزرفان راديو</h2>
+          
+          <div style="text-align: right; margin-bottom: 25px;">
+              <h3 style="border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px; margin-bottom: 15px;">معلومات عن الراديو</h3>
+              <p>الاذاعة الجمعوية إزرفان izrfan web radio اذاعة جمعوية بمدينة الخميسات، تأسست سنة 2016 من طرف جمعية المحامين الشباب بالخميسات والجمعية الوطنية للمحامين الشباب بالمغرب و بتعاون مع منتدى بدائل المغرب/بوابة جسور مشرق-مغرب.</p>
+              <p>تعمل الاذاعة الجمعوية إزرفان على معالجة عديد القضايا التي تهم مدينة الخميسات، وفق مقاربة مهنية و اعلامية هادفة، و تتوزع البرامج التي يتم انتاجها بين القانونية وتبسيط المساطر القانونية و الثقافية، التعليمية، الاجتماعية و تغطيات لمختلف الانشطة التي تقام بالمدينة خصوصا منها الجمعوية.</p>
+              <p>و تحتل قضايا المواطنة، الحريات، حقوق الانسان، المرأة و الشباب احدى اهم ركائز الخط التحريري للاذاعة، و التي تجعل منها فضاء للحوار و النقاش الهادف و الهادئ، بين مختلف الفعاليات المدنية و السياسية المتواجدة بالمدينة، اضافة للاهتمام اكثر بقضايا محاربة التهميش و الاقصاء و الكراهية و المساهمة في نشر خطابات التسامح و التعايش.</p>
+              <p>تتوفر الإذاعة على لجنة للاشراف تضم اعضاء من المكتب التنفيذي للجمعيتين اضافة الى منسق الاذاعة، يتمثل دورها اساسا في الاشراف على الإذاعة، و تعبئة الموارد لفائدة الاذاعة.</p>
+              <p>كما تعمل الاذاعة الجمعوية على التكوين المستمر لفائدة المتطوعات و المتطوعين اما بشكل فردي او عبر مجموعة من الدورات التكوينية بحضور متخصصين في المجال الاعلامي، سواء في الجانب التقني او التحريري، بما في ذلك الانفتاح على المؤسسات التعليمية و دور الشباب لانضمام عدد اكبر من المتطوعات و المتطوعين للإذاعة و لتوسيع قائدة الاستماع.</p>
+              <p>و كما جل الاذاعات الجمعوية بالمغرب، هناك عدد من العراقيل في اشتغال الاذاعة، اساسا منها الاعتراف القانوني بها، اشكالية استمرارية المتطوعين و المتطوعات في الاشتغال بالاذاعة لمدة اطول باعتبار اغلبيتهم طلبة او في بداية مشوارهم العملي، اضاقة الى اشكالية التمويل و النمودج الاقتصادي الملائم لاستمرارية الاذاعات في العمل.</p>
+          </div>
+          
+          <div style="text-align: right; margin-bottom: 25px;">
+              <h3 style="border-bottom: 2px solid var(--accent-gold); padding-bottom: 5px; margin-bottom: 15px;">روابط الحلقات المسجلة</h3>
+              <ul style="list-style: none; padding: 0;">
+                  <li style="margin-bottom: 10px;"><i class="fas fa-podcast" style="color: var(--accent-gold); margin-left: 10px;"></i> <a href="#" target="_blank">الحلقة 1: حقوق المرأة في مدونة الأسرة</a></li>
+                  <li style="margin-bottom: 10px;"><i class="fas fa-podcast" style="color: var(--accent-gold); margin-left: 10px;"></i> <a href="#" target="_blank">الحلقة 2: آليات محاربة الرشوة</a></li>
+                  <li style="margin-bottom: 10px;"><i class="fas fa-podcast" style="color: var(--accent-gold); margin-left: 10px;"></i> <a href="#" target="_blank">الحلقة 3: أهمية استقلال القضاء</a></li>
+              </ul>
+          </div>
+          <a href="https://www.facebook.com/share/1CF5S8vQju/" target="_blank" class="submit-btn" style="background-color: #1877f2; color: white;"><i class="fab fa-facebook-f" style="margin-left: 8px;"></i> متابعة على فيسبوك</a>
+      </div>
+  </div>
+
+  <script>
+    // --- Script for Goals Section Accordion ---
+    function toggleSection(id) {
+        const content = document.getElementById(id);
+        if (!content) return;
+
+        const isVisible = content.style.display === "block";
+        
+        document.querySelectorAll('.goal-content').forEach(item => {
+          if (item.id !== id) {
+              item.style.height = "0";
+              item.style.opacity = 0;
+              setTimeout(() => { item.style.display = "none"; }, 500);
+          }
+        });
+
+        if (isVisible) {
+          content.style.height = "0";
+          content.style.opacity = 0;
+          setTimeout(() => { content.style.display = "none"; }, 500);
+        } else {
+          content.style.display = "block";
+          const height = content.scrollHeight + "px";
+          content.style.height = "0";
+          requestAnimationFrame(() => {
+            content.style.height = height;
+            content.style.opacity = 1;
+          });
+          setTimeout(() => {
+             content.style.height = 'auto';
+          }, 500);
+        }
+    }
+
+
+    // --- Script for Programs Popup ---
+    function openPopup(text) {
+        document.getElementById("popup-text").innerText = text;
+        document.getElementById("popup").style.display = "flex";
+    }
+
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+    }
+
+    // --- Modal Tab switching function ---
+    function openTab(evt, tabName) {
+        let i, tabcontent, tablinks;
+        const modal = evt.target.closest('.modal-content');
+        tabcontent = modal.getElementsByClassName("modal-tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = modal.getElementsByClassName("tab-link");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+
+    // --- Main script execution after DOM is loaded ---
+    document.addEventListener("DOMContentLoaded", function() {
+
+      // --- Script for Hamburger Menu ---
+      const menuToggle = document.getElementById('menu-toggle');
+      const mainNav = document.getElementById('main-nav');
+      const navLinks = document.querySelectorAll('.main-nav a');
+
+      if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+      }
+
+      // --- Script for Animated Counter ---
+      const statsSection = document.getElementById('services-stats');
+      const counter = document.querySelector('.counter');
+      const speed = 200; 
+      let counterAnimated = false;
+
+      const startCounter = () => {
+        if (counterAnimated || !counter) return;
+        counterAnimated = true;
+        
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText.replace(/[,+]/g, '');
+          const increment = target / speed;
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment).toLocaleString();
+            setTimeout(updateCount, 10);
+          } else {
+            counter.innerText = target.toLocaleString() + '+';
+          }
+        };
+        updateCount();
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            startCounter();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      if (statsSection) {
+        observer.observe(statsSection);
+      }
+      
+      // --- Modal Handling Script ---
+      const openModalButtons = document.querySelectorAll('[data-modal-target]');
+      const closeModalButtons = document.querySelectorAll('.modal-close');
+      const modals = document.querySelectorAll('.modal');
+
+      const closeAllModals = () => {
+          modals.forEach(modal => {
+              modal.classList.remove('active');
+          });
+      };
+
+      openModalButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              const modal = document.querySelector(button.dataset.modalTarget);
+              if (modal) {
+                  modal.classList.add('active');
+              }
+          });
+      });
+
+      closeModalButtons.forEach(button => {
+          button.addEventListener('click', closeAllModals);
+      });
+      
+      modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if(e.target === modal){
+                closeAllModals();
+            }
+        });
+      });
+
+      // --- Volunteer Button Logic ---
+      const volunteerBtn = document.querySelector('.volunteer-contact-btn');
+      if(volunteerBtn) {
+          volunteerBtn.addEventListener('click', () => {
+              closeAllModals();
+          });
+      }
+
+      // --- Form Submission Simulation (for ALL forms) ---
+      const allForms = document.querySelectorAll('form');
+      allForms.forEach(form => {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const responseMessageElement = form.closest('.modal-content')?.querySelector('.modal-response-message') || document.getElementById("responseMessage");
+
+            if (responseMessageElement) {
+                responseMessageElement.textContent = "جار الإرسال...";
+                responseMessageElement.style.color = "var(--accent-gold)";
+                
+                setTimeout(() => {
+                    responseMessageElement.textContent = "تم إرسال الرسالة بنجاح! شكرا لك.";
+                    responseMessageElement.style.color = "green";
+                    form.reset();
+                    setTimeout(() => {
+                        responseMessageElement.textContent = "";
+                    }, 4000);
+                }, 1500);
+            }
+        });
+      });
+
+    });
+  </script>
+
+</body>
+</html>

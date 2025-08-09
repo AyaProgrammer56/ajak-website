@@ -1,2 +1,0 @@
-GMAIL_USERNAME=ajak@gmail.com
-GMAIL_PASSWORD=1234 abcd xyz 5678
