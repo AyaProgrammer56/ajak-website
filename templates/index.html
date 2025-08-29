@@ -242,7 +242,15 @@
         padding: 80px 5%;
         text-align: center;
     }
-    
+     
+
+    .about-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
     .services-stats-section h1 {
         font-size: 2.5rem;
         margin-bottom: 60px;
@@ -730,6 +738,68 @@
         font-weight: 600;
         text-align: center;
     }
+    
+    /* --- Footer Section --- */
+    .site-footer {
+        background-color: var(--primary-dark);
+        color: var(--text-light);
+        padding: 60px 5% 20px;
+    }
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+    .footer-section h3 {
+        color: #fff;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+    }
+    .footer-section h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 40px;
+        height: 3px;
+        background-color: var(--accent-gold);
+    }
+    .footer-section p {
+        line-height: 1.8;
+        color: var(--text-light);
+    }
+    .footer-section ul {
+        list-style: none;
+    }
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+    .footer-section ul a {
+        color: var(--text-light);
+        transition: color 0.3s, padding-right 0.3s;
+    }
+    .footer-section ul a:hover {
+        color: var(--accent-gold);
+        padding-right: 5px;
+    }
+    .social-icons a {
+        color: var(--text-light);
+        font-size: 1.5rem;
+        margin-left: 15px;
+        transition: color 0.3s, transform 0.3s;
+    }
+    .social-icons a:hover {
+        color: var(--accent-gold);
+        transform: scale(1.1);
+    }
+    .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid var(--secondary-dark);
+    }
 
 
     /* --- Responsive Design --- */
@@ -801,12 +871,24 @@
         .contact-info, .contact-form {
             padding: 30px;
         }
+
+        /* Footer Responsive */
+        .footer-content {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .footer-section h3::after {
+            right: 50%;
+            transform: translateX(50%);
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <header>
     <div class="logo">AJAK</div>
     <nav class="main-nav" id="main-nav">
@@ -824,7 +906,6 @@
     </button>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero-section" id="hero">
     <img src="{{ url_for('static', filename='LOI MM.webp') }}" alt="AJAK Courthouse" class="hero-img" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/0d1b2a/c5b358?text=AJAK';">
     <div class="hero-content">
@@ -833,20 +914,17 @@
     </div>
   </section>
 
-  <!-- Combined Services & Stats Section -->
   <section class="services-stats-section" id="services-stats">
     <div class="container">
-        <h1>إحصائيات وخدمات الجمعية</h1>
+        <h1> خدماتنا</h1>
         <div class="cards-grid">
-            <!-- Call to Action Card 1 -->
             <div class="service-card" data-modal-target="#volunteer-modal">
                 <i class="fas fa-hand-holding-heart card-icon"></i>
                 <h3>كن متطوعاً</h3>
                 <p>انضم لفريقنا وساهم في نشر الوعي الحقوقي</p>
             </div>
 
-            <!-- Service Card 2 -->
-            <a href="https://hrlibrary.umn.edu/arab/index.html" target="_blank">
+            <a href="https://share.google/FsVz9CHvtkk6eFVdR" target="_blank">
               <div class="service-card">
                   <i class="fas fa-book-open card-icon"></i>
                   <h3>المكتبة الحقوقية</h3>
@@ -854,14 +932,12 @@
               </div>
             </a>
 
-            <!-- Service Card 3 -->
             <div class="service-card" data-modal-target="#forms-modal">
                 <i class="fas fa-hands-helping card-icon"></i>
                 <h3>الدعم والشكايات والتوجيه</h3>
                 <p>اطلب الدعم أو قدم شكاية أو تواصل مع موجه</p>
             </div>
 
-            <!-- Service Card 4 -->
             <div class="service-card" data-modal-target="#radio-modal">
                 <i class="fas fa-broadcast-tower card-icon"></i>
                 <h3>إزرفان راديو</h3>
@@ -871,7 +947,6 @@
     </div>
   </section>
 
-  <!-- About Section -->
   <section class="about-section" id="about">
     <div class="about-text">
       <h1>من نحن</h1>
@@ -881,12 +956,11 @@
       </p>
     </div>
     <div class="about-image">
-      <img src="{{ url_for('static', filename='IMAGE TEAM.jpg') }}" alt="AJAK Team"  onerror="this.onerror=null;this.src='https://placehold.co/600x400/1b263b/ffffff?text=فريق+AJAK';">
+      <img src="{{ url_for('static', filename='IMAGE TEAM.jpg') }}" alt="AJAK Team" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1b263b/ffffff?text=فريق+AJAK';">
     </div>
   </section>
 
 
-  <!-- Goals Section -->
   <section class="goals-section" id="goals">
     <div class="goals-container">
         <h1>🎯 أهداف الجمعية</h1>
@@ -937,7 +1011,6 @@
     </div>
   </section>
 
-  <!-- Programs Section -->
   <section class="programs-section" id="programs">
     <h2 class="section-title">البرامج</h2>
     <p class="section-description">
@@ -972,7 +1045,6 @@
     </div>
   </section>
 
-  <!-- Popup for Programs -->
   <div class="popup" id="popup">
     <div class="popup-content">
       <span class="close-btn" onclick="closePopup()">✖</span>
@@ -980,8 +1052,7 @@
     </div>
   </div>
 
- <!-- Contact Section -->
-  <section class="contact-section" id="contact">
+ <section class="contact-section" id="contact">
     <div class="container">
       <div class="contact-wrapper">
         <div class="contact-info">
@@ -1010,16 +1081,13 @@
               <textarea id="message" name="message" rows="5" required></textarea>
             </div>
             <button type="submit" class="submit-btn">إرسال الرسالة</button>
+            <p id="responseMessage"></p>
           </form>
-          <p id="responseMessage"></p>
         </div>
       </div>
     </div>
   </section>
       
-  <!-- Modals HTML -->
-
-  <!-- Volunteer Modal -->
   <div class="modal" id="volunteer-modal">
     <div class="modal-content">
         <span class="modal-close">&times;</span>
@@ -1039,7 +1107,6 @@
     </div>
   </div>
 
-  <!-- Forms Modal (Support, Complaints, Guidance) -->
   <div class="modal" id="forms-modal">
       <div class="modal-content">
           <span class="modal-close">&times;</span>
@@ -1050,11 +1117,10 @@
               <button class="tab-link" onclick="openTab(event, 'guidance-content')">التوجيه</button>
           </div>
 
-          <!-- Support Form Tab -->
           <div id="support-form-content" class="modal-tab-content" style="display: block;">
               <h3>استمارة طلب الدعم النفسي</h3>
               <p>نحن هنا للاستماع إليك. يرجى ملء النموذج أدناه وسيقوم أحد المختصين بالتواصل معك في أقرب وقت ممكن.</p>
-              <form class="modal-form">
+              <form id="supportForm" class="modal-form">
                   <div class="input-group">
                       <label for="support-name">الاسم (اختياري)</label>
                       <input type="text" id="support-name" name="name">
@@ -1071,11 +1137,10 @@
               </form>
           </div>
 
-          <!-- Complaint Form Tab -->
           <div id="complaint-form-content" class="modal-tab-content">
               <h3>استمارة تقديم شكاية</h3>
               <p>إذا كنت ترغب في التبليغ عن حالة فساد أو انتهاك للحقوق، يرجى استخدام هذا النموذج. نضمن سرية معلوماتك.</p>
-              <form class="modal-form">
+              <form id="complaintForm" class="modal-form">
                   <div class="input-group">
                       <label for="complaint-name">الاسم الكامل</label>
                       <input type="text" id="complaint-name" name="name" required>
@@ -1096,12 +1161,10 @@
               </form>
           </div>
           
-          <!-- Guidance Tab -->
           <div id="guidance-content" class="modal-tab-content">
               <h3>فريق التوجيه</h3>
               <p>للحصول على توجيه قانوني أو إداري، يمكنكم التواصل مباشرة مع أحد أعضاء فريقنا المختص.</p>
               <div class="guidance-contacts-container">
-                  <!-- Contact 1 -->
                   <div class="guidance-contact-card">
                       <div class="guidance-contact-info">
                           <h4>الأستاذ محمد الحبيب بنشيخ</h4>
@@ -1111,7 +1174,6 @@
                           <a href="tel:+212667368797"><i class="fas fa-phone-square-alt"></i></a>
                       </div>
                   </div>
-                  <!-- Contact 2 -->
                   <div class="guidance-contact-card">
                       <div class="guidance-contact-info">
                           <h4>الأستاذ هشام المقدمي</h4>
@@ -1121,7 +1183,6 @@
                           <a href="tel:+212661793007"><i class="fas fa-phone-square-alt"></i></a>
                       </div>
                   </div>
-                  <!-- Contact 3 -->
                   <div class="guidance-contact-card">
                       <div class="guidance-contact-info">
                           <h4>الأستاذة سعاد بطل</h4>
@@ -1138,7 +1199,6 @@
       </div>
   </div>
 
-  <!-- Radio Modal -->
   <div class="modal" id="radio-modal">
       <div class="modal-content">
           <span class="modal-close">&times;</span>
@@ -1165,6 +1225,42 @@
           <a href="https://www.facebook.com/share/1CF5S8vQju/" target="_blank" class="submit-btn" style="background-color: #1877f2; color: white;"><i class="fab fa-facebook-f" style="margin-left: 8px;"></i> متابعة على فيسبوك</a>
       </div>
   </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section about">
+          <h3>حول الجمعية</h3>
+          <p>جمعية AJAK هي جمعية قانونية غير ربحية، ملتزمة بالدفاع عن حقوق الإنسان، والعدالة، والمساواة للجميع. نسعى لبناء مجتمع أكثر عدلاً وشمولاً.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/share/1CF5S8vQju/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+        <div class="footer-section links">
+          <h3>روابط سريعة</h3>
+          <ul>
+            <li><a href="#hero">الرئيسية</a></li>
+            <li><a href="#services-stats">خدماتنا</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#goals">الأهداف</a></li>
+            <li><a href="#programs">البرامج</a></li>
+          </ul>
+        </div>
+        <div class="footer-section contact-info">
+          <h3>تواصل معنا</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 08 شارع الدرك الملكي، الخميسات</li>
+            <li><i class="fas fa-phone-alt"></i> <a href="tel:0537553168" style="color: inherit;">0537553168</a></li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:lahraraya@gmail.com" style="color: inherit;">lahraraya@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>جميع الحقوق محفوظة &copy; 2024 جمعية AJAK</p>
+      </div>
+    </div>
+  </footer>
+
 
   <script>
     // --- Script for Goals Section Accordion ---
@@ -1251,43 +1347,6 @@
             });
         });
       }
-
-      // --- Script for Animated Counter ---
-      const statsSection = document.getElementById('services-stats');
-      const counter = document.querySelector('.counter');
-      const speed = 200; 
-      let counterAnimated = false;
-
-      const startCounter = () => {
-        if (counterAnimated || !counter) return;
-        counterAnimated = true;
-        
-        const updateCount = () => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText.replace(/[,+]/g, '');
-          const increment = target / speed;
-          if (count < target) {
-            counter.innerText = Math.ceil(count + increment).toLocaleString();
-            setTimeout(updateCount, 10);
-          } else {
-            counter.innerText = target.toLocaleString() + '+';
-          }
-        };
-        updateCount();
-      };
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            startCounter();
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.5 });
-
-      if (statsSection) {
-        observer.observe(statsSection);
-      }
       
       // --- Modal Handling Script ---
       const openModalButtons = document.querySelectorAll('[data-modal-target]');
@@ -1329,27 +1388,64 @@
           });
       }
 
-      // --- Form Submission Simulation (for ALL forms) ---
-      const allForms = document.querySelectorAll('form');
-      allForms.forEach(form => {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const responseMessageElement = form.closest('.modal-content')?.querySelector('.modal-response-message') || document.getElementById("responseMessage");
+      // --- Form Submission with Fetch to Flask Backend ---
+      const handleFormSubmit = async (form, endpoint) => {
+          const formData = new FormData(form);
+          const data = {};
+          formData.forEach((value, key) => {
+              data[key] = value;
+          });
+          
+          const responseMessageElement = form.closest('.modal-content')?.querySelector('.modal-response-message') || document.getElementById("responseMessage");
 
-            if (responseMessageElement) {
-                responseMessageElement.textContent = "جار الإرسال...";
-                responseMessageElement.style.color = "var(--accent-gold)";
-                
-                setTimeout(() => {
-                    responseMessageElement.textContent = "تم إرسال الرسالة بنجاح! شكرا لك.";
-                    responseMessageElement.style.color = "green";
-                    form.reset();
-                    setTimeout(() => {
-                        responseMessageElement.textContent = "";
-                    }, 4000);
-                }, 1500);
-            }
-        });
+          if (responseMessageElement) {
+              responseMessageElement.textContent = "جار الإرسال...";
+              responseMessageElement.style.color = "var(--accent-gold)";
+              
+              try {
+                  const response = await fetch(endpoint, {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify(data),
+                  });
+
+                  const result = await response.json();
+
+                  if (response.ok) {
+                      responseMessageElement.textContent = result.message;
+                      responseMessageElement.style.color = "green";
+                      form.reset();
+                  } else {
+                      responseMessageElement.textContent = "حدث خطأ أثناء الإرسال.";
+                      responseMessageElement.style.color = "red";
+                  }
+              } catch (error) {
+                  console.error('Error:', error);
+                  responseMessageElement.textContent = "لا يمكن الاتصال بالخادم.";
+                  responseMessageElement.style.color = "red";
+              } finally {
+                  setTimeout(() => {
+                      responseMessageElement.textContent = "";
+                  }, 5000);
+              }
+          }
+      };
+
+      document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          handleFormSubmit(e.target, '/submit_contact');
+      });
+      
+      document.getElementById('supportForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          handleFormSubmit(e.target, '/submit_support');
+      });
+      
+      document.getElementById('complaintForm')?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          handleFormSubmit(e.target, '/submit_complaint');
       });
 
     });
